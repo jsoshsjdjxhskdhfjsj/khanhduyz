@@ -2353,7 +2353,7 @@ local function YTZCAJC_fake_script()
 	
 	frame.InputBegan:Connect(function(input)
 		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = false
+			dragToggle = true
 			dragStart = input.Position
 			startPos = frame.Position
 			input.Changed:Connect(function()
@@ -2639,13 +2639,13 @@ local posZ = 0
         TypeMastery = Value
     end)
 
-    local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {Title = "Auto BF Mastery", Default = false })
+    local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {Title = "BF Mastery", Default = false })
     ToggleMasteryFruit:OnChanged(function(Value)
         AutoFarmMasDevilFruit = Value
     end)
     Options.ToggleMasteryFruit:SetValue(false)
 
-    local ToggleMasteryGun = Tabs.Main:AddToggle("ToggleMasteryGun", {Title = "Auto Gun Mastery", Default = false })
+    local ToggleMasteryGun = Tabs.Main:AddToggle("ToggleMasteryGun", {Title = "Gun Mastery", Default = false })
     ToggleMasteryGun:OnChanged(function(Value)
         AutoFarmMasGun = Value
     end)
@@ -3175,7 +3175,7 @@ ToggleBone:OnChanged(function(Value)
     _G.AutoBone = Value
 end)
 Options.ToggleBone:SetValue(false)
-local FaiFaoQuestBone =  CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
+local SleepQuestBone =  CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
 
 
 spawn(function()
@@ -3189,18 +3189,18 @@ spawn(function()
                 if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                     if BypassTP then
                         wait()
-                       if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - FaiFaoQuestBone.Position).Magnitude > 2500 then
-                       BTP(FaiFaoQuestBone)
+                       if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - SleepQuestBone.Position).Magnitude > 2500 then
+                       BTP(SleepQuestBone)
               
-                       elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - FaiFaoQuestBone.Position).Magnitude < 2500 then
+                       elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - SleepQuestBone.Position).Magnitude < 2500 then
                
-                       Tween(FaiFaoQuestBone)
+                       Tween(SleepQuestBone)
                        end
                  else
           
-                         Tween(FaiFaoQuestBone)
+                         Tween(SleepQuestBone)
                          end
-                if (FaiFaoQuestBone.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then    
+                if (SleepQuestBone.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then    
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest","HauntedQuest2",1)
                     end
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -3504,7 +3504,7 @@ spawn(function()
         Default = 1,
     })
 
-    DropdownMaterial:SetValue("Conjured Cocoa")
+    DropdownMaterial:SetValue("???")
 
     DropdownMaterial:OnChanged(function(Value)
         SelectMaterial = Value
@@ -4082,7 +4082,7 @@ end
     })
 
 
-    local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Auto Hallow Scythe ", Default = false })
+    local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Auto Hallow Scythe", Default = false })
 
     ToggleHallow:OnChanged(function(Value)
         AutoHallowSycthe = Value
@@ -4160,7 +4160,7 @@ end
             AutoTushita = Value
         end)
         Options.ToggleTushita:SetValue(false)
-        local FaiFaoTushita = CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125)
+        local SleepTushita = CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125)
         spawn(function()
             while task.wait(.1) do
                 if AutoTushita then
@@ -4350,9 +4350,6 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Setting
     Tabs.Setting:AddParagraph({
-        Title = "Anti-Ban: On"
-        Content = "You are not allowed to turn it off"
-    Tabs.Setting:AddParagraph({
         Title = "Setting",
         Content = "Setting Farm"
     })
@@ -4508,7 +4505,7 @@ CamShake:Stop()
 
 
 
-    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Reset Teleport", Default = false })
+    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Bypass Tp", Default = false })
     ToggleBypassTP:OnChanged(function(Value)
         BypassTP = Value
     end)
@@ -4519,13 +4516,13 @@ end
 
 local ToggleRemove = Tabs.Setting:AddToggle("ToggleRemove", {Title = "Remove Dame Text", Default = true })
 ToggleRemove:OnChanged(function(Value)
-    FaiFaoRemovetext = Value
+    SleepRemovetext = Value
     end)
     Options.ToggleRemove:SetValue(true)
 
     spawn(function()
         while wait() do
-            if FaiFaoRemovetext then
+            if SleepRemovetext then
                 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
             else
                 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = true
@@ -5900,11 +5897,7 @@ end
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
---sea
-local ToggleSeaEvent = Tabs.Sea:AddToggle("ToggleAutoAcientQuest", {Title = "Auto Sea Event", Default = false })
-ToggleAutoSeaEvent:OnChanged(function(Value)
-    AutoSeaEvent = Value
-end)
+--Sea
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 --shop
@@ -6055,7 +6048,7 @@ Tabs.Shop:AddButton({
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
     end
-
+})
 
 Tabs.Shop:AddParagraph({
 	Title = "Items",
