@@ -5898,10 +5898,9 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Sea
-local ToggleAutoSeaEvent = tabs.Sea:AddToggle("ToggleAutoSeaEvent", {Title = "Auto Sea Event",Default = false })
-Tabs.Sea:AddToggle("ToggleAutoSeaBeast", {Title = "Auto Sea Beast",Default = false })
-Tabs.Sea:AddToggle("ToggleAutoPiranha", {Title = "Auto Piranha",Default = false })
-Tabs.Sea:AddToggle("ToggleAutoTerrorShark", {Title = "Auto Terror Shark",Default = false })
+Tabs.Sea:AddToggle("ToggleAutoSeaEvent", {Title = "Auto Sea Event",Default = false })
+ToggleAutoSeaEvent:OnChanged(function(Value)  
+		_G.AutoSeaEvent = Value
 end
 
 --------------------------------------------------------------------------------------------------------------------------------------------
