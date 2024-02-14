@@ -4444,7 +4444,6 @@ CamShake:Stop()
 
 
 
-Tabs.Setting:AddButton("ToggleSuperFastAttack", {Title = "Super Fast Attack", Default = false })
 
     local ToggleBringMob = Tabs.Setting:AddToggle("ToggleBringMob", {Title = "Bring Mob", Default = true })
     ToggleBringMob:OnChanged(function(Value)
