@@ -20,7 +20,6 @@ local Tabs = {
     Fruit = Window:AddTab({ Title = "Tab DF", Icon = "" }),
     Raid = Window:AddTab({ Title = "Tab Raid", Icon = "" }),
     Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
-    Sea = Window:AddTab({ Title = "Tab Sea Event", Icon = "" }),
     Shop = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
 	Misc = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
 }
@@ -2353,7 +2352,7 @@ local function YTZCAJC_fake_script()
 	
 	frame.InputBegan:Connect(function(input)
 		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = true
+			dragToggle = false
 			dragStart = input.Position
 			startPos = frame.Position
 			input.Changed:Connect(function()
@@ -3569,8 +3568,8 @@ if Third_Sea then
 
 
       Tabs.Main:AddParagraph({
-        Title = "Rough Sea",
-        Content = "Auto avoid rough sea"
+        Title = "Sea Event",
+        Content = "Auto sea event"
     })
 
 
@@ -3751,82 +3750,6 @@ if Third_Sea then
             end
         end
      end)
-
-
-     Tabs.Main:AddParagraph({
-        Title = "Elite Hunter",
-        Content = "Auto find and kill boss elite"
-    })
-
-
-    local ToggleElite = Tabs.Main:AddToggle("ToggleElite", {Title = "Auto Elite Hunter", Default = false })
-
-    ToggleElite:OnChanged(function(Value)
-       _G.AutoElite = Value
-       end)
-       Options.ToggleElite:SetValue(false)
-       spawn(function()
-           while task.wait() do
-               if _G.AutoElite then
-                   pcall(function()
-                       if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-                           if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Urban") then
-                               if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
-                                   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                       if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                           if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
-                                               repeat task.wait()
-                                                   EquipTool(SelectWeapon)
-                                                   AutoHaki()
-                                                   Tween(v.HumanoidRootPart.CFrame * Pos)
-                                                   MonsterPosition = v.HumanoidRootPart.CFrame
-                                                   v.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-                                                   v.Humanoid.JumpPower = 0
-                                                   v.Humanoid.WalkSpeed = 0
-                                                   v.HumanoidRootPart.CanCollide = false
-                                                   --v.Humanoid:ChangeState(14)
-                                                   --v.Humanoid:ChangeState(11)
-                                                   Click()
-                                                   FarmPos = v.HumanoidRootPart.CFrame
-                                                   MonFarm = v.Name
-                                                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
-                                                   BringMobs = false
-                                               until _G.AutoElite == false or v.Humanoid.Health <= 0 or not v.Parent
-                                           end
-                                           BringMobs = true
-                                       end
-                                   end
-                               else
-                                   if BypassTP then
-                                   if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
-                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
-                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
-                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   end
-                               else
-                                   if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
-                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
-                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
-                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                   end
-   
-                               end
-                               end
-                           end
-                       else
-                           game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
-                       end
-                   end)
-               end
-			   BirngMobs = true
-           end
-       end)
-   
-    end
 
 if Third_Sea then
 
@@ -4076,6 +3999,80 @@ end)
     end)
 end
 
+     Tabs.Main:AddParagraph({
+        Title = "Elite Hunter",
+        Content = "Auto find and kill boss elite"
+    })
+
+
+    local ToggleElite = Tabs.Main:AddToggle("ToggleElite", {Title = "Auto Elite Hunter", Default = false })
+
+    ToggleElite:OnChanged(function(Value)
+       _G.AutoElite = Value
+       end)
+       Options.ToggleElite:SetValue(false)
+       spawn(function()
+           while task.wait() do
+               if _G.AutoElite then
+                   pcall(function()
+                       if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+                           if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Urban") then
+                               if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+                                   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                       if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                           if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
+                                               repeat task.wait()
+                                                   EquipTool(SelectWeapon)
+                                                   AutoHaki()
+                                                   Tween(v.HumanoidRootPart.CFrame * Pos)
+                                                   MonsterPosition = v.HumanoidRootPart.CFrame
+                                                   v.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+                                                   v.Humanoid.JumpPower = 0
+                                                   v.Humanoid.WalkSpeed = 0
+                                                   v.HumanoidRootPart.CanCollide = false
+                                                   --v.Humanoid:ChangeState(14)
+                                                   --v.Humanoid:ChangeState(11)
+                                                   Click()
+                                                   FarmPos = v.HumanoidRootPart.CFrame
+                                                   MonFarm = v.Name
+                                                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+                                                   BringMobs = false
+                                               until _G.AutoElite == false or v.Humanoid.Health <= 0 or not v.Parent
+                                           end
+                                           BringMobs = true
+                                       end
+                                   end
+                               else
+                                   if BypassTP then
+                                   if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
+                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
+                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
+                                       BTP(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   end
+                               else
+                                   if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
+                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
+                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
+                                       Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                   end
+   
+                               end
+                               end
+                           end
+                       else
+                           game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+                       end
+                   end)
+               end
+			   BirngMobs = true
+           end
+       end)
+   
+    end
 
      Tabs.Main:AddParagraph({
         Title = "Items",
@@ -5899,11 +5896,6 @@ while wait() do
 end
 end)
 
---------------------------------------------------------------------------------------------------------------------------------------------
---Sea
-Tabs.Sea:AddToggle("AutoSeaEvent", {Title = "Auto Sea Event", Default = false })
-
-     
 --------------------------------------------------------------------------------------------------------------------------------------------
 --shop
 
