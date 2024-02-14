@@ -2311,7 +2311,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
-ImageButton.Size = UDim2.new(0.10,0,0.10,0,0.10)
+ImageButton.Size = UDim2.new(0,0.10,0,0.10)
 ImageButton.Image = "rbxassetid://13085023270"
 
 UICorner.CornerRadius = UDim.new(0, 30)
