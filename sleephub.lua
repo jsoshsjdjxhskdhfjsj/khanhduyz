@@ -20,6 +20,7 @@ local Tabs = {
     Fruit = Window:AddTab({ Title = "Tab DF", Icon = "" }),
     Raid = Window:AddTab({ Title = "Tab Raid", Icon = "" }),
     Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
+    Sea = Window:AddTab({ Title = "Tab Sea Event", Icon = "" })
     Shop = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
 	Misc = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
 }
