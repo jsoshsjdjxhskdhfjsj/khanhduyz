@@ -8,7 +8,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 400),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Gray",
+    Theme = "Darker",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
 })
 local Tabs = {
@@ -2541,7 +2541,7 @@ local posZ = 0
 
       Tabs.Main:AddButton({
         Title = "Redeem All Code",
-        Description = "Auto redeem all code",
+        Description = "Redeem all code x2 exp",
         Callback = function()
             UseCode()
         end
@@ -2565,7 +2565,6 @@ local posZ = 0
     UseCode("Axiore")
     UseCode("TantaiGaming")
     UseCode("STRAWHATMAINE")
-    UseCode("Kitt_Reset")
 
 
 
