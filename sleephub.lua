@@ -6,7 +6,7 @@ local Window = Fluent:CreateWindow({
     Title = "Sleep Hub-Blox Fruit",
     SubTitle = "by Khanhduyz",
     TabWidth = 160,
-    Size = UDim2.fromOffset(500, 400),
+    Size = UDim2.fromOffset(450, 400),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Darker",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
@@ -5082,7 +5082,7 @@ spawn(function()
             end)
         end
         wait(1)
-        stop()
+        stop(2)
     end
     end)
 
