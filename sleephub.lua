@@ -2311,7 +2311,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
-ImageButton.Size = UDim2.new(0.06, 0.06, 0.06, 0.06)
+ImageButton.Size = UDim2.new(0.11,0.11,0.11,0.11)
 ImageButton.Image = "rbxassetid://13085023270"
 
 UICorner.CornerRadius = UDim.new(0, 30)
@@ -3646,7 +3646,8 @@ if Third_Sea then
         Content = "Auto sea event"
     })
 
-
+    Tabs.Main:AddToggle("ToggleAutoSeaEvent", {Title = "Auto Sea Event", Default = false })
+    
     local ToggleBoat = Tabs.Main:AddToggle("ToggleBoat", {Title = "Auto Buy Boat", Default = false })
 
     ToggleBoat:OnChanged(function(Value)
@@ -3726,25 +3727,6 @@ if Third_Sea then
             end)
         end
     end)
-
-
-   local ToggleTW = Tabs.Main:AddToggle("ToggleTW", {Title = "Auto Press W", Default = false })
-
-   ToggleTW:OnChanged(function(Value)
-    _G.AutoW = Value
-    end)
-    Options.ToggleTW:SetValue(false)
-    spawn(function()
-        while wait() do
-            pcall(function()
-                if _G.AutoW then
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
-                end
-            end)
-        end
-        end)
-    
-
 
     local ToggleTerrorshark = Tabs.Main:AddToggle("ToggleTerrorshark", {Title = "Kill Terrorshark", Default = false })
 
@@ -3959,24 +3941,6 @@ ToggleSeaBeAst:OnChanged(function(Value)
             end)
         end
     end)
-
-local ToggleAutoW = Tabs.Main:AddToggle("ToggleAutoW", {Title = "Auto Press W", Default = false })
-ToggleAutoW:OnChanged(function(Value)
-    _G.AutoW = Value
-    end)
- Options.ToggleAutoW:SetValue(false)
- spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.AutoW then
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
-            end
-        end)
-    end
-    end)
-
-
-
 
 
 
