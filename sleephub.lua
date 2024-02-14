@@ -5081,7 +5081,8 @@ spawn(function()
                 end
             end)
         end
-        wait(0.3)
+        wait(1)
+        stop()
     end
     end)
 
@@ -5499,14 +5500,6 @@ elseif Third_Sea then
         end
     })
 end
-
-
-
-Tabs.Raid:AddParagraph({
-    Title = "Raid Law",
-    Content = ""
-})
-
 
 local ToggleLaw = Tabs.Raid:AddToggle("ToggleLaw", {Title = "Auto Law", Default = false })
 
