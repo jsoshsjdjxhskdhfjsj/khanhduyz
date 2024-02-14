@@ -2329,7 +2329,7 @@ local function HCEGY_fake_script()
 
 	local TweenService = game:GetService("TweenService")
 	local tweeninfo = TweenInfo.new(4, Enum.EasingStyle.Linear, Enum.EasingDirection.In, -1)
-	local tween = TweenService:Create(script.Parent, tweeninfo, {Rotation = 0})
+	local tween = TweenService:Create(script.Parent, tweeninfo, {Rotation = 360})
 	tween:Play()
 end
 coroutine.wrap(HCEGY_fake_script)()
