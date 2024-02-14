@@ -16,7 +16,7 @@ local Tabs = {
     Setting = Window:AddTab({ Title = "Tab Setting", Icon = "" }),
     Stats = Window:AddTab({ Title = "Tab Stats", Icon = "" }),
     Player = Window:AddTab({ Title = "Tab Player", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Tab Island", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
     Fruit = Window:AddTab({ Title = "Tab DF", Icon = "" }),
     Raid = Window:AddTab({ Title = "Tab Raid", Icon = "" }),
     Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
@@ -1984,7 +1984,7 @@ end
         function TP2(P1)
         local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if Distance >= 1 then
-        Speed = 300
+        Speed = 350
         end
         game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear), {
           CFrame = P1
@@ -2004,9 +2004,9 @@ end
  function Tween(Pos)
         Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if game.Players.LocalPlayer.Character.Humanoid.Sit == true then game.Players.LocalPlayer.Character.Humanoid.Sit = true end
-        pcall(function() tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/300, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
+        pcall(function() tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/350, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
         tween:Play()
-        if Distance <= 300 then
+        if Distance <= 350 then
             tween:Cancel()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
         end
@@ -2565,6 +2565,7 @@ local posZ = 0
     UseCode("Axiore")
     UseCode("TantaiGaming")
     UseCode("STRAWHATMAINE")
+    UseCode("Kitt_Reset")
 
 
 
@@ -2638,13 +2639,13 @@ local posZ = 0
         TypeMastery = Value
     end)
 
-    local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {Title = "Auto BF Mastery", Default = false })
+    local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {Title = "BF Mastery", Default = false })
     ToggleMasteryFruit:OnChanged(function(Value)
         AutoFarmMasDevilFruit = Value
     end)
     Options.ToggleMasteryFruit:SetValue(false)
 
-    local ToggleMasteryGun = Tabs.Main:AddToggle("ToggleMasteryGun", {Title = "Auto Gun Mastery", Default = false })
+    local ToggleMasteryGun = Tabs.Main:AddToggle("ToggleMasteryGun", {Title = "Gun Mastery", Default = false })
     ToggleMasteryGun:OnChanged(function(Value)
         AutoFarmMasGun = Value
     end)
@@ -3174,7 +3175,7 @@ ToggleBone:OnChanged(function(Value)
     _G.AutoBone = Value
 end)
 Options.ToggleBone:SetValue(false)
-local FaiFaoQuestBone =  CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
+local SleepQuestBone =  CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
 
 
 spawn(function()
@@ -3188,18 +3189,18 @@ spawn(function()
                 if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                     if BypassTP then
                         wait()
-                       if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - FaiFaoQuestBone.Position).Magnitude > 2500 then
-                       BTP(FaiFaoQuestBone)
+                       if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - SleepQuestBone.Position).Magnitude > 2500 then
+                       BTP(SleepQuestBone)
               
-                       elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - FaiFaoQuestBone.Position).Magnitude < 2500 then
+                       elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - SleepQuestBone.Position).Magnitude < 2500 then
                
-                       Tween(FaiFaoQuestBone)
+                       Tween(SleepQuestBone)
                        end
                  else
           
-                         Tween(FaiFaoQuestBone)
+                         Tween(SleepQuestBone)
                          end
-                if (FaiFaoQuestBone.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then    
+                if (SleepQuestBone.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then    
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest","HauntedQuest2",1)
                     end
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -3503,7 +3504,7 @@ spawn(function()
         Default = 1,
     })
 
-    DropdownMaterial:SetValue("Conjured Cocoa")
+    DropdownMaterial:SetValue("Please Choose")
 
     DropdownMaterial:OnChanged(function(Value)
         SelectMaterial = Value
@@ -3566,9 +3567,8 @@ spawn(function()
 
      Tabs.Main:AddParagraph({
         Title = "Elite Hunter",
-        Content = "Auto find and kill boss elite"
+        Content = "Auto find and kill elite"
     })
-
 
     local ToggleElite = Tabs.Main:AddToggle("ToggleElite", {Title = "Auto Elite Hunter", Default = false })
 
@@ -3638,7 +3638,7 @@ spawn(function()
        end)
    
     end
-    
+
 if Third_Sea then
 
       Tabs.Main:AddParagraph({
@@ -3824,6 +3824,8 @@ if Third_Sea then
             end
         end
      end)
+
+if Third_Sea then
 
 local ToggleSeaBeAst = Tabs.Main:AddToggle("ToggleSeaBeAst", {Title = "Auto Sea Beast", Default = false })
 
@@ -4072,7 +4074,7 @@ end
     })
 
 
-    local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Auto Hallow Scythe", Default = false })
+    local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Auto Hallow Scythe [Fully]", Default = false })
 
     ToggleHallow:OnChanged(function(Value)
         AutoHallowSycthe = Value
@@ -4150,7 +4152,7 @@ end
             AutoTushita = Value
         end)
         Options.ToggleTushita:SetValue(false)
-        local FaiFaoTushita = CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125)
+        local SleepTushita = CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125)
         spawn(function()
             while task.wait(.1) do
                 if AutoTushita then
@@ -4442,6 +4444,8 @@ CamShake:Stop()
 
 
 
+Tabs.Setting:AddButton("ToggleSuperFastAttack", {Title = "Super Fast Attack", Default = false })
+
     local ToggleBringMob = Tabs.Setting:AddToggle("ToggleBringMob", {Title = "Bring Mob", Default = true })
     ToggleBringMob:OnChanged(function(Value)
         BringMobs = Value
@@ -4495,7 +4499,7 @@ CamShake:Stop()
 
 
 
-    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Bypass Tp", Default = false })
+    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Reset Teleport", Default = false })
     ToggleBypassTP:OnChanged(function(Value)
         BypassTP = Value
     end)
@@ -4506,13 +4510,13 @@ end
 
 local ToggleRemove = Tabs.Setting:AddToggle("ToggleRemove", {Title = "Remove Dame Text", Default = true })
 ToggleRemove:OnChanged(function(Value)
-    FaiFaoRemovetext = Value
+    SleepRemovetext = Value
     end)
     Options.ToggleRemove:SetValue(true)
 
     spawn(function()
         while wait() do
-            if FaiFaoRemovetext then
+            if SleepRemovetext then
                 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
             else
                 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = true
@@ -5606,7 +5610,7 @@ end)
 
 
 Tabs.Race:AddButton({
-    Title = "Timple Of Time",
+    Title = "Temple Of Time",
     Description = "",
     Callback = function()
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
@@ -6028,13 +6032,6 @@ Tabs.Shop:AddButton({
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 	end
-})
-Tabs.Shop:AddButton({
-    Title = "Sanguine Art",
-    Description = "",
-    Callback = function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
-    end
 })
 
 
