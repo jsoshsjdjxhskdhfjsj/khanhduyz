@@ -2317,7 +2317,7 @@ ImageButton.Image = "rbxassetid://13085023270"
 UICorner.CornerRadius = UDim.new(0, 30)
 UICorner.Parent = ImageButton
 
-UIGradient.Color = ColorSequenceKeypoint.new(0.32, Color3.fromRGB(146, 255, 251)), ColorSequenceKeypoint.new(0.65, Color3.fromRGB(180, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(96, 255, 231))}
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(146, 255, 251)), ColorSequenceKeypoint.new(0.32, Color3.fromRGB(146, 255, 251)), ColorSequenceKeypoint.new(0.65, Color3.fromRGB(180, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(96, 255, 231))}
 UIGradient.Parent = ImageButton
 
 UIAspectRatioConstraint.Parent = ImageButton
