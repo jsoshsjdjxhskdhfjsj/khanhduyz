@@ -2311,8 +2311,8 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
-ImageButton.Size = UDim2.new(0,0.10,0,0.10)
-ImageButton.Image = "rbxassetid://13085023270"
+ImageButton.Size = UDim2.new(0.10,0.10,0.10,0.10)
+ImageButton.Image = "rbxassetid://16364515586"
 
 UICorner.CornerRadius = UDim.new(0, 30)
 UICorner.Parent = ImageButton
@@ -3641,14 +3641,14 @@ spawn(function()
     
 if Third_Sea then
 
-      Tabs.Sea:AddParagraph({
+      Tabs.Main:AddParagraph({
         Title = "Sea Event",
         Content = "Auto sea event"
     })
 
-    Tabs.Sea:AddToggle("ToggleAutoSeaEvent", {Title = "Auto Sea Event", Default = false })
+    Tabs.Main:AddToggle("ToggleAutoSeaEvent", {Title = "Auto Sea Event", Default = false })
     
-    local ToggleBoat = Tabs.Sea:AddToggle("ToggleBoat", {Title = "Auto Buy Boat", Default = false })
+    local ToggleBoat = Tabs.Main:AddToggle("ToggleBoat", {Title = "Auto Buy Boat", Default = false })
 
     ToggleBoat:OnChanged(function(Value)
         _G.AutoBuyBoat = Value
@@ -3728,7 +3728,7 @@ if Third_Sea then
         end
     end)
 
-    local ToggleTerrorshark = Tabs.Sea:AddToggle("ToggleTerrorshark", {Title = "Kill Terrorshark", Default = false })
+    local ToggleTerrorshark = Tabs.Main:AddToggle("ToggleTerrorshark", {Title = "Kill Terrorshark", Default = false })
 
     ToggleTerrorshark:OnChanged(function(Value)
         _G.AutoTerrorshark = Value
@@ -3809,7 +3809,7 @@ if Third_Sea then
 
 if Third_Sea then
 
-local ToggleSeaBeAst = Tabs.Sea:AddToggle("ToggleSeaBeAst", {Title = "Auto Sea Beast", Default = false })
+local ToggleSeaBeAst = Tabs.Main:AddToggle("ToggleSeaBeAst", {Title = "Auto Sea Beast", Default = false })
 
 ToggleSeaBeAst:OnChanged(function(Value)
     _G.AutoSeaBeast = Value
@@ -3944,7 +3944,7 @@ ToggleSeaBeAst:OnChanged(function(Value)
 
 
 
-local ToggleMirage = Tabs.Sea:AddToggle("ToggleMirage", {Title = "Auto Mirage Island", Default = false })
+local ToggleMirage = Tabs.Main:AddToggle("ToggleMirage", {Title = "Auto Mirage Island", Default = false })
 ToggleMirage:OnChanged(function(Value)
     if state then
         _G.dao = true
@@ -4010,7 +4010,7 @@ end)
  Options.ToggleMirage:SetValue(false)
 
 
- local AutoW = Tabs.Sea:AddToggle("AutoW", {Title = "Auto Press W", Default = false })
+ local AutoW = Tabs.Main:AddToggle("AutoW", {Title = "Auto Press W", Default = false })
  AutoW:OnChanged(function(Value)
     _G.AutoW = Value
      end)
@@ -4025,6 +4025,7 @@ end)
     end
     end)
 end
+
 
      Tabs.Main:AddParagraph({
         Title = "Items",
@@ -4252,6 +4253,7 @@ end
         end
         
     Tabs.Main:AddToggle("ToggleAutoCDK", {Title = "Auto CDK / During Production...", Default = false }) 
+    end
 
 
 
