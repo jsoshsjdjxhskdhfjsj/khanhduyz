@@ -3980,7 +3980,6 @@ ToggleAutoW:OnChanged(function(Value)
 
 
 
-
 local ToggleMirage = Tabs.Main:AddToggle("ToggleMirage", {Title = "Auto Mirage Island", Default = false })
 ToggleMirage:OnChanged(function(Value)
     if state then
@@ -4125,7 +4124,7 @@ end
            end)
         
            
-           local ToggleYama = Tabs.Main:AddToggle("ToggleYama", {Title = "Auto Get Yama", Default = false })
+           local ToggleYama = Tabs.Main:AddToggle("ToggleYama", {Title = "Auto Yama", Default = false })
            ToggleYama:OnChanged(function(Value)
             _G.AutoYama = Value
            end)
@@ -5795,12 +5794,6 @@ spawn(function()
     end)
 end)
 
-Tabs.Race:AddButton("AutoFinishTrial", {Title = "Auto Finish Trial", Default = false })
-end
-
-Tabs.Race:AddButton("AutoKillNear", {Title = "Auto Kill Player Trial", Default = false })
-end
-
 
 
 
@@ -5901,7 +5894,7 @@ end)
 Options.ToggleRandomBone:SetValue(false)
 	
 spawn(function()
-	while wait(1) do
+	while wait(0.0000000000000000000000000000000000000000000000000001) do
 	if _G.AutoRandomBone then
 	local args = {
 	 [1] = "Bones",
@@ -6035,11 +6028,11 @@ Tabs.Shop:AddButton({
 	end
 })
 Tabs.Shop:AddButton({
-     Title = "Sanguine Art",
-     Description = "New mele",
-     Callback = function()
-         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
-     end
+	Title = "Sanguine Art",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+	end
 })
 
 
@@ -6050,7 +6043,7 @@ Tabs.Shop:AddParagraph({
 
 Tabs.Shop:AddButton({
 	Title = "Refund Stats",
-	Description = "Need 2500 Fragment",
+	Description = "",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
@@ -6058,7 +6051,7 @@ Tabs.Shop:AddButton({
 })
 Tabs.Shop:AddButton({
 	Title = "Reroll Race",
-	Description = "Need 3000 Fragment",
+	Description = "",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
@@ -6081,9 +6074,6 @@ Tabs.Misc:AddButton({
 	Title = "Hop Server",
 	Description = "",
 	Callback = function()
-	print("Sleep Hub Waits 5s")
-	wait(5)
-	print("Sleep Hub Server Hop")
 		Hop()
 	end
 })
@@ -6204,9 +6194,7 @@ Tabs.Misc:AddButton({
         getgenv().DontTeleportTheSameNumber = true 
         getgenv().CopytoClipboard = false
         if not game:IsLoaded() then
-            print("Sleep Hub Waits 5s")
-            wait(5)
-            print("Sleep Hub Server Low Hop!")
+            print("Sleep Hub Server Hop ...")
         end
         local maxplayers = math.huge
         local serversmaxplayer;
