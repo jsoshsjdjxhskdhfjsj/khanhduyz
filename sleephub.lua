@@ -2311,7 +2311,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
-ImageButton.Size = UDim2.new(0,0.10,0,0.10)
+ImageButton.Size = UDim2.new(0.10,0,0.10,0,0.10)
 ImageButton.Image = "rbxassetid://13085023270"
 
 UICorner.CornerRadius = UDim.new(0, 30)
@@ -4402,101 +4402,6 @@ end)
 local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
 CamShake:Stop()
 
-
-
-
-    Tabs.Setting:AddToggle("ToggleSPFastAttack", {Title = "Super Fast Attack", Default = false })
-    ToggleSPFastAttack:OnChanged(function(vu)
-        FastAttack = vu
-    end)
-    Options.ToggleSPFastAttack:SetValue(false)
-
-
-
-
-_G.FastAttackDelay = 0.5
-
-    local Client = game.Players.LocalPlayer
-    local STOP = require(Client.PlayerScripts.CombatFramework.Particle)
-    local STOPRL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
-    spawn(function()
-        while task.wait() do
-            pcall(function()
-                if not shared.orl then shared.orl = STOPRL.wrapAttackAnimationAsync end
-                if not shared.cpc then shared.cpc = STOP.play end
-                    STOPRL.wrapAttackAnimationAsync = function(a,b,c,d,func)
-                    local Hits = STOPRL.getBladeHits(b,c,d)
-                    if Hits then
-                        if SPFastAttack then
-                            STOP.play = function() end
-                            a:Play(0.001,0.001,0.001)
-                            func(Hits)
-                            STOP.play = shared.cpc
-                            wait(a.length * 0.5)
-                            a:Stop()
-                        else
-                            a:Play()
-                        end
-                    end
-                end
-            end)
-        end
-    end)
-
-function GetBladeHit()
-    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
-    local CmrFwLib = CombatFrameworkLib[2]
-    local p13 = CmrFwLib.activeController
-    local weapon = p13.blades[1]
-    if not weapon then 
-        return weapon
-    end
-    while weapon.Parent ~= game.Players.LocalPlayer.Character do
-        weapon = weapon.Parent 
-    end
-    return weapon
-end
-function AttackHit()
-    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
-    local CmrFwLib = CombatFrameworkLib[2]
-    local plr = game.Players.LocalPlayer
-    for i = 1, 1 do
-        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(plr.Character,{plr.Character.HumanoidRootPart},60)
-        local cac = {}
-        local hash = {}
-        for k, v in pairs(bladehit) do
-            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
-                table.insert(cac, v.Parent.HumanoidRootPart)
-                hash[v.Parent] = true
-            end
-        end
-        bladehit = cac
-        if #bladehit > 0 then
-            pcall(function()
-                CmrFwLib.activeController.timeToNextAttack = 0.5
-                CmrFwLib.activeController.attacking = false
-                CmrFwLib.activeController.blocking = false
-                CmrFwLib.activeController.timeToNextBlock = 0
-                CmrFwLib.activeController.increment = 3
-                CmrFwLib.activeController.hitboxMagnitude = 80
-                CmrFwLib.activeController.focusStart = 0
-                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
-                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
-            end)
-        end
-    end
-end
-spawn(function()
-    while wait(.1) do
-        if SPFastAttack then
-            pcall(function()
-                repeat task.wait(_G.SPFastAttackDelay)
-                    AttackHit()
-                until not SPFastAttack
-            end)
-        end
-    end
-end)
 
     local ToggleBringMob = Tabs.Setting:AddToggle("ToggleBringMob", {Title = "Bring Mob", Default = true })
     ToggleBringMob:OnChanged(function(Value)
