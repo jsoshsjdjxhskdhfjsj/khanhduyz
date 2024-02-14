@@ -2542,7 +2542,7 @@ local posZ = 0
 
       Tabs.Main:AddButton({
         Title = "Redeem All Code",
-        Description = "Redeem all code x2 exp",
+        Description = "Auto redeem all code",
         Callback = function()
             UseCode()
         end
@@ -2566,6 +2566,7 @@ local posZ = 0
     UseCode("Axiore")
     UseCode("TantaiGaming")
     UseCode("STRAWHATMAINE")
+    UseCode("Kitt_Reset")
 
 
 
@@ -4505,7 +4506,7 @@ CamShake:Stop()
 
 
 
-    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Bypass Tp", Default = false })
+    local ToggleBypassTP = Tabs.Setting:AddToggle("ToggleBypassTP", {Title = "Reset Teleport", Default = false })
     ToggleBypassTP:OnChanged(function(Value)
         BypassTP = Value
     end)
@@ -5616,7 +5617,7 @@ end)
 
 
 Tabs.Race:AddButton({
-    Title = "Timple Of Time",
+    Title = "Temple Of Time",
     Description = "",
     Callback = function()
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
@@ -5806,6 +5807,7 @@ spawn(function()
     end)
 end)
 
+Tabs.Race:AddToggle("ToggleAutoKillPlayerTrial", {Title = "Auto Kill Player In Trial", Default = false })
 
 
 
