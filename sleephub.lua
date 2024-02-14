@@ -3370,6 +3370,9 @@ spawn(function()
 
 
 
+
+
+
     Tabs.Main:AddParagraph({
         Title = "Boss Farm",
         Content = ""
@@ -3564,6 +3567,7 @@ spawn(function()
       end)
 if Third_Sea then
 
+
       Tabs.Main:AddParagraph({
         Title = "Rough Sea",
         Content = "Auto avoid rough sea"
@@ -3747,7 +3751,6 @@ if Third_Sea then
             end
         end
      end)
-
 
 
      Tabs.Main:AddParagraph({
@@ -5900,6 +5903,7 @@ end)
 --Sea
 Tabs.Sea:AddToggle("AutoSeaEvent", {Title = "Auto Sea Event", Default = false })
 
+     
 --------------------------------------------------------------------------------------------------------------------------------------------
 --shop
 
