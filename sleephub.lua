@@ -2353,7 +2353,7 @@ local function YTZCAJC_fake_script()
 	
 	frame.InputBegan:Connect(function(input)
 		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = false
+			dragToggle = true
 			dragStart = input.Position
 			startPos = frame.Position
 			input.Changed:Connect(function()
