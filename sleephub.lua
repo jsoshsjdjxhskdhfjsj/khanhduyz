@@ -4517,27 +4517,6 @@ ToggleRemove:OnChanged(function(Value)
         end
         end)
         
-    KillPercent = 90
-    local SliderHealt = Tabs.Main:AddSlider("SliderHealt", {
-        Title = "Speed Hack",
-        Description = "Change your speed",
-        Default = 90,
-        Min = 0,
-        Max = 350,
-        Rounding = 1,
-        Callback = function(Value)
-            KillPercent = Value
-        end
-    })
-
-    SliderHealt:OnChanged(function(Value)
-        KillPercent = Value
-    end)
-
-    SliderHealt:SetValue(90)
-
-
-
 Tabs.Setting:AddParagraph({
     Title = "Setting Skill",
     Content = "Skill use for farm mastery"
