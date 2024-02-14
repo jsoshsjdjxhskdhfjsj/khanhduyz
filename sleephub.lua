@@ -4069,9 +4069,6 @@ end
                 end
             end
         end)
-      
-    Tabs.Main:AddToggle("ToggleRaidCastle", {Title = "Auto Raid Castle / During Production", Default = false })
-    end
 
     local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Auto Hallow Scythe", Default = false })
 
